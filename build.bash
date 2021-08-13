@@ -7,7 +7,7 @@ set -exo pipefail
 set -o xtrace
 
 # Build the system image in Docker
-docker buildx build --platform linux/arm64 --tag gaia --load --progress plain .
+docker buildx build --platform linux/arm64 --tag tradeberry --load --progress plain .
 
 # EXTRACT IMAGE
 # Make a temporary directory
@@ -15,7 +15,7 @@ sudo rm -rf .tmp || true
 mkdir .tmp/
 
 # save the image to result-rootfs.tar
-docker save --output ./.tmp/result-rootfs.tar gaia
+docker save --output ./.tmp/result-rootfs.tar tradeberry
 
 # Extract the image using docker-extract
 docker run --rm --tty --volume $(pwd)/./.tmp:/root/./.tmp --workdir /root/./.tmp/.. faddat/toolbox /tools/docker-extract --root ./.tmp/result-rootfs  ./.tmp/result-rootfs.tar
@@ -49,7 +49,7 @@ mkdir -p images
 fallocate -l 4G "images/tradeberry.img"
 
 # loop-mount the image file so it becomes a disk
-export LOOP=$(sudo losetup --find --show images/gaia.img)
+export LOOP=$(sudo losetup --find --show images/tradeberry.img)
 
 # partition the loop-mounted disk
 sudo parted --script $LOOP mklabel msdos
