@@ -1,4 +1,4 @@
-FROM faddat/sos-lite
+FROM ghcr.io/faddat/sos-lite
 
 COPY motd /etc/motd
 
