@@ -23,7 +23,7 @@ jobs:
         run: echo ${{ steps.buildx.outputs.platforms }}
 
       - name: Build
-        run: bash build.sh
+        run: bash build.bash
 
       - name: Compress
         run: xz -T $(nproc) images/tradeberry.img
