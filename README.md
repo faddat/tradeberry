@@ -2,9 +2,13 @@
 Resilient, portable Osmosis
 
 -[x] runs sos
+
 -[x] runs osmosis
+
 -[ ] state sync
+
 -[ ] serves default osmosis UI
+
 -[ ] has its own UI that makes validation easier
 
 ## Status
